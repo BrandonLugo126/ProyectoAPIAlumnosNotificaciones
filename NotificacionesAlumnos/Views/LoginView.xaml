@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.LoginView"
+             Title="LoginView">
+    <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+
+        <BoxView Color="#2B5797" 
+                  HeightRequest="100" 
+                  WidthRequest="100" 
+                  CornerRadius="50"
+                  HorizontalOptions="Center"
+                  Margin="0,40,0,10"/>
+
+        <Label Text="SISTEMA ESCOLAR" 
+                FontSize="26" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center" 
+                TextColor="#2B5797"/>
+        <Label Text="Inicia sesión para ver tus avisos" 
+                FontSize="15" 
+                HorizontalOptions="Center" 
+                TextColor="#666666"
+                Margin="0,0,0,20"/>
+
+        <Label Text="Clave o Matrícula" TextColor="#2B5797" FontAttributes="Bold" Margin="5,0"/>
+        <Border StrokeShape="RoundRectangle 12" 
+                 Stroke="#2B5797" 
+                 StrokeThickness="2" 
+                 BackgroundColor="White"
+                 HeightRequest="50">
+            <Entry Placeholder="Ej: 20240001" 
+                    PlaceholderColor="#999999"
+                    TextColor="#333333"
+                    Text="{Binding Usuario}" 
+                    Margin="15,0"/>
+        </Border>
+
+        <Label Text="Contraseña" TextColor="#2B5797" FontAttributes="Bold" Margin="5,0"/>
+        <Border StrokeShape="RoundRectangle 12" 
+                 Stroke="#2B5797" 
+                 StrokeThickness="2" 
+                 BackgroundColor="White"
+                 HeightRequest="50">
+            <Entry Placeholder="••••••••" 
+                    PlaceholderColor="#999999"
+                    TextColor="#333333"
+                    IsPassword="True" 
+                    Text="{Binding Password}" 
+                    Margin="15,0"/>
+        </Border>
+
+        <Button Text="ENTRAR AL SISTEMA"
+                 BackgroundColor="#2B5797"
+                 TextColor="White"
+                 FontAttributes="Bold"
+                 FontSize="16"
+                 CornerRadius="12"
+                 HeightRequest="55"
+                 Margin="0,20,0,0"
+                 Command="{Binding LoginCommand}"/>
+
+        <Label Text="¿Olvidaste tu contraseña? Contacta a control escolar" 
+                FontSize="12" 
+                HorizontalOptions="Center" 
+                TextColor="#999999"
+                Margin="0,20,0,0"/>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                            Color="#2B5797"
+                            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+</ContentPage>

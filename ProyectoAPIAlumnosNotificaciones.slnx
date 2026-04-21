@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="NotificacionesAlumnos/NotificacionesAlumnos.csproj" Id="37ba2915-5ec8-47a1-a9a4-8fff5baa2978">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="ProyectoAPIAlumnosNotificaciones/ProyectoAPIAlumnosNotificaciones.csproj" />
 </Solution>

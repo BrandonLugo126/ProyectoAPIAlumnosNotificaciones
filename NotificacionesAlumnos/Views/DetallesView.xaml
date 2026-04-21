@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.DetallesView"
+             Title="DetallesView">
+   <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="15">
+            
+            <Border BackgroundColor="#E3F2FD"
+                    
+                    HorizontalOptions="Start" 
+                    Padding="10,4" 
+                    StrokeShape="RoundRectangle 5">
+                <Label Text="AVISO ESCOLAR" 
+                       TextColor="#2B5797" 
+                       FontSize="12" 
+                       FontAttributes="Bold"/>
+            </Border>
+
+            <Label Text="{Binding Titulo}" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   TextColor="#333333"/>
+
+            <Grid ColumnDefinitions="Auto, *">
+                <BoxView Grid.Column="0" Color="#2B5797" WidthRequest="4" Margin="0,5,10,5"/>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="{Binding NombreMaestro}" 
+                           FontAttributes="Bold" 
+                           TextColor="#2B5797"/>
+                    <Label Text="{Binding Fecha}" 
+                           FontSize="12" 
+                           TextColor="#999999"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <BoxView HeightRequest="1" Color="#EEEEEE" Margin="0,10"/>
+
+            <Label Text="{Binding Contenido}" 
+                   FontSize="16" 
+                   LineHeight="1.5"
+                   TextColor="#444444"/>
+
+            <Button Text="ENTENDIDO" 
+                    Margin="0,30,0,0"
+                    BackgroundColor="#2B5797"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Command="{Binding VolverCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

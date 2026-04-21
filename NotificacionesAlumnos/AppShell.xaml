@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="NotificacionesAlumnos.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NotificacionesAlumnos"
+    xmlns:views="clr-namespace:NotificacionesAlumnos.Views"
+    Shell.FlyoutBehavior="Disabled"
+    
+    Title="NotificacionesAlumnos">
+
+    <!--<ShellContent
+        Title="Iniciar Sesión"
+        ContentTemplate="{DataTemplate views:LoginView}"
+        Route="LoginView" />-->
+
+    <TabBar>
+        <Tab Title="Personales" Icon="informacion-personal.png">
+            <ShellContent 
+                Title="Mis Avisos"
+                ContentTemplate="{DataTemplate views:AvisosView}"
+                Route="AvisosView" />
+        </Tab>
+
+        <Tab Title="Generales" Icon="escuela.png">
+            <ShellContent 
+                Title="Escuela"
+                ContentTemplate="{DataTemplate views:AvisosGeneralesView}"
+                Route="AvisosGeneralesView" />
+        </Tab>
+
+        <Tab Title="Perfil" Icon="Perfil.png">
+            <ShellContent 
+                Title="Mi Cuenta"
+                ContentTemplate="{DataTemplate views:PerfilAlumnoView}"
+                Route="PerfilAlumnoView" />
+        </Tab>
+    </TabBar>
+
+</Shell>
