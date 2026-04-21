@@ -3,29 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotificacionesAlumnos.Views.PerfilAlumnoView"
              Title="PerfilAlumnoView">
-    <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+    <VerticalStackLayout Padding="30" Spacing="20">
 
-        <Border WidthRequest="120" HeightRequest="120"  
-                HorizontalOptions="Center" BackgroundColor="#2B5797" StrokeThickness="0">
-            <Label Text="A" TextColor="White" VerticalOptions="Center" 
-                   HorizontalOptions="Center" FontSize="50" FontAttributes="Bold"/>
+        <Border WidthRequest="100" HeightRequest="100"  HorizontalOptions="Center" BackgroundColor="#2B5797" StrokeThickness="0">
+            <Label Text="JP" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="35" FontAttributes="Bold"/>
         </Border>
 
-        <VerticalStackLayout HorizontalOptions="Center" Spacing="8">
-            <Label Text="Nombre del Alumno" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Label Text="Matrícula: 12345678" TextColor="Gray" HorizontalOptions="Center"/>
-            <Label Text="Carrera / Grado" TextColor="#2B5797" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Nombre Completo" FontAttributes="Bold" TextColor="#2B5797" Margin="5,0"/>
+            <Border StrokeShape="RoundRectangle 10" Padding="10,0" Stroke="#DDDDDD">
+                <Entry Text="{Binding NombreAlumno}" Placeholder="Tu nombre" />
+            </Border>
+
+            <Label Text="Contraseña" FontAttributes="Bold" TextColor="#2B5797" Margin="5,0"/>
+            <Border StrokeShape="RoundRectangle 10" Padding="10,0" Stroke="#DDDDDD">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Entry Text="{Binding Password}" IsPassword="True" VerticalOptions="Center"/>
+                    <ImageButton Grid.Column="1" Source="ojo.png" HeightRequest="20" Margin="5"/>
+                </Grid>
+            </Border>
+
+            <Label Text="Grupo Asignado" FontAttributes="Bold" TextColor="#2B5797" Margin="5,0"/>
+            <Label Text="Sexto Semestre - Grupo B" FontSize="16" Margin="10,0" TextColor="#333333"/>
+
         </VerticalStackLayout>
 
-        <BoxView HeightRequest="1" Color="#E0E0E0" Margin="0,10"/>
+        <Button Text="GUARDAR CAMBIOS" 
+            BackgroundColor="#2B5797" 
+            TextColor="White" 
+            Margin="0,20,0,0"
+            Command="{Binding GuardarPerfilCommand}"/>
 
         <Button Text="CERRAR SESIÓN" 
-                BackgroundColor="#C62828" 
-                TextColor="White" 
-                FontAttributes="Bold"
-                CornerRadius="12"
-                HeightRequest="55"
-                Command="{Binding LogoutCommand}"/>
+            BackgroundColor="Transparent" 
+            TextColor="#C62828" 
+            BorderColor="#C62828"
+            BorderWidth="1"
+            Command="{Binding LogoutCommand}"/>
 
     </VerticalStackLayout>
 </ContentPage>

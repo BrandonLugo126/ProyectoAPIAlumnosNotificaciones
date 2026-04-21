@@ -5,14 +5,9 @@
              Title="Dashboard">
     <Grid RowDefinitions="Auto, Auto, *" >
 
-        <VerticalStackLayout  Grid.Row="0" Padding="20" BackgroundColor="#2B5797">
-            <Label Text="¡Hola, Bienvenido!" 
-               TextColor="White" 
-               FontSize="22" 
-               FontAttributes="Bold"/>
-            <Label Text="Alumno: Juan Pérez | Grupo: 4-B" 
-               TextColor="#D1D1D1" 
-               FontSize="13"/>
+        <VerticalStackLayout Grid.Row="0" Padding="20" BackgroundColor="#2B5797">
+            <Label Text="¡Hola, Bienvenido!" TextColor="White" FontSize="22" FontAttributes="Bold"/>
+            <Label Text="Alumno: Juan Pérez | Grupo: 4-B" TextColor="#D1D1D1" FontSize="13"/>
         </VerticalStackLayout>
 
         <HorizontalStackLayout Grid.Row="1" Padding="10" Spacing="10" HorizontalOptions="Center">
@@ -20,54 +15,45 @@
             <Button Text="Generales" BackgroundColor="White" TextColor="#2B5797"  CornerRadius="15" HeightRequest="35" FontSize="12"/>
         </HorizontalStackLayout>
 
-        <CollectionView Grid.Row="2" 
-                    ItemsSource="{Binding Avisos}"
-                    Margin="15,0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border StrokeShape="RoundRectangle 12"
-                        StrokeThickness="0"
-                        BackgroundColor="White"
-                        Margin="0,0,0,12"
-                        Padding="15">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Offset="2,2" Radius="5" Opacity="0.05"/>
-                        </Border.Shadow>
+        <RefreshView Grid.Row="2" 
+                 IsRefreshing="{Binding IsBusy}" 
+                 RefreshColor="#2B5797"
+                 Command="{Binding RefreshCommand}">
 
-                        <VerticalStackLayout Spacing="5">
-                            <Grid ColumnDefinitions="*, Auto">
-                                <Label Grid.Column="0" 
-                                   Text="{Binding Titulo}" 
-                                   FontAttributes="Bold" 
-                                   FontSize="16" 
-                                   TextColor="#333333"/>
-                                <Ellipse Grid.Column="1" 
-                                     Fill="#FF4444" 
-                                     WidthRequest="10" 
-                                     HeightRequest="10" 
-                                     IsVisible="{Binding EsNuevo}"/>
-                            </Grid>
+            <CollectionView ItemsSource="{Binding Avisos}"  
+                        Margin="15,0">
 
-                            <Label Text="{Binding Contenido}" 
-                               TextColor="#666666" 
-                               MaxLines="2" 
-                               FontSize="14"/>
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10" Margin="0,50">
+                        <Label Text="📭" FontSize="60" HorizontalOptions="Center" Opacity="0.5"/>
+                        <Label Text="No hay avisos por ahora" TextColor="Gray" FontSize="16" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
 
-                            <Grid ColumnDefinitions="*, Auto" Margin="0,10,0,0">
-                                <Label Grid.Column="0" 
-                                   Text="{Binding NombreMaestro}" 
-                                   FontSize="11" 
-                                   TextColor="#2B5797" 
-                                   FontAttributes="Italic"/>
-                                <Label Grid.Column="1" 
-                                   Text="{Binding Fecha}" 
-                                   FontSize="11" 
-                                   TextColor="#999999"/>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="White" Margin="0,0,0,12" Padding="15">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="2,2" Radius="5" Opacity="0.05"/>
+                            </Border.Shadow>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Grid.Column="0" Text="{Binding Titulo}" FontAttributes="Bold" FontSize="16" TextColor="#333333"/>
+                                    <Ellipse Grid.Column="1" Fill="#FF4444" WidthRequest="10" HeightRequest="10" IsVisible="{Binding EsNuevo}"/>
+                                </Grid>
+
+                                <Label Text="{Binding Contenido}" TextColor="#666666" MaxLines="2" FontSize="14"/>
+
+                                <Grid ColumnDefinitions="*, Auto" Margin="0,10,0,0">
+                                    <Label Grid.Column="0" Text="{Binding NombreMaestro}" FontSize="11" TextColor="#2B5797" FontAttributes="Italic"/>
+                                    <Label Grid.Column="1" Text="{Binding Fecha}" FontSize="11" TextColor="#999999"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </Grid>
 </ContentPage>
