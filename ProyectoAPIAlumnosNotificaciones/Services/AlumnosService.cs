@@ -28,6 +28,17 @@ namespace ProyectoAPIAlumnosNotificaciones.Services
             _validadorEditar = validadorEditar;
         }
 
+        public bool IniciarSesion(LoginDTO loginDTO)
+        {
+            var usuarioExiste = _repository.GetAll().Any(x=>x.Nombre==loginDTO.Nombre && x.Contraseña==loginDTO.Contraseña);
+            if (!usuarioExiste)
+            {
+                throw new KeyNotFoundException("Usuario o contraseña incorrectos");
+            }
+            else {
+                return usuarioExiste;
+            }
+        }
         public List<AlumnoDTO> GetAll()
         {
             var alumnos = _repository.GetAll();

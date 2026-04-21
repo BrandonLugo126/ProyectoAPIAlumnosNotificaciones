@@ -6,7 +6,7 @@ namespace ProyectoAPIAlumnosNotificaciones.Mappers
 {
     public class AvisosPersonalesProfile : Profile
     {
-        AvisosPersonalesProfile()
+        public AvisosPersonalesProfile()
         {
             CreateMap<Avisospersonales, AvsisosPersonalesDTO>();
             CreateMap<CrearAvisoPersonalDTO, Avisospersonales>();
