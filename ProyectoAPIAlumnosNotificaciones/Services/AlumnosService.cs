@@ -18,11 +18,13 @@ namespace ProyectoAPIAlumnosNotificaciones.Services
 
         public AlumnoService(
             Repository<Alumnos> repository,
+            GruposService gruposService,
             IMapper mapper,
             IValidator<AgregarAlumnoDTO> validadorAgregar,
             IValidator<EditarAlumnoDTO> validadorEditar)
         {
             _repository = repository;
+            _gruposService = gruposService;    
             _mapper = mapper;
             _validadorAgregar = validadorAgregar;
             _validadorEditar = validadorEditar;
