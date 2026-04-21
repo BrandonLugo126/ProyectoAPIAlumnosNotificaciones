@@ -18,16 +18,29 @@ namespace ProyectoAPIAlumnosNotificaciones.Services
 
         public AlumnoService(
             Repository<Alumnos> repository,
+            GruposService gruposService,
             IMapper mapper,
             IValidator<AgregarAlumnoDTO> validadorAgregar,
             IValidator<EditarAlumnoDTO> validadorEditar)
         {
             _repository = repository;
+            _gruposService = gruposService;    
             _mapper = mapper;
             _validadorAgregar = validadorAgregar;
             _validadorEditar = validadorEditar;
         }
 
+        public bool IniciarSesion(LoginDTO loginDTO)
+        {
+            var usuarioExiste = _repository.GetAll().Any(x=>x.Nombre==loginDTO.Nombre && x.Contraseña==loginDTO.Contraseña);
+            if (!usuarioExiste)
+            {
+                throw new KeyNotFoundException("Usuario o contraseña incorrectos");
+            }
+            else {
+                return usuarioExiste;
+            }
+        }
         public List<AlumnoDTO> GetAll()
         {
             var alumnos = _repository.GetAll();

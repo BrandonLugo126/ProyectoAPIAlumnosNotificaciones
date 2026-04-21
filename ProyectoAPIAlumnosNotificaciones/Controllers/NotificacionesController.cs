@@ -47,7 +47,7 @@ namespace ProyectoAPIAlumnosNotificaciones.Controllers
             return Ok(avisosPersonales);
         }
 
-        [HttpPost]
+        [HttpPost("CrearAvisoGeneral")]
         public IActionResult CrearAvisoGeneral(CrearAvisoGeneralDTO avisoGeneral)
         {
             try
@@ -61,7 +61,7 @@ namespace ProyectoAPIAlumnosNotificaciones.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("CrearAvisoPersonal")]
         public IActionResult CrearAvisoPersonal(CrearAvisoPersonalDTO avisoPersonal)
         {
             try

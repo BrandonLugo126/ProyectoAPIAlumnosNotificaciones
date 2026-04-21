@@ -100,5 +100,20 @@ namespace ProyectoAPIAlumnosNotificaciones.Services
                 throw new KeyNotFoundException();
             }
         }
+
+        public bool IniciarSesion(LoginDTO loginDTO)
+        {
+            var usuarioExiste = _repository.GetAll().Any(x => x.Nombre == loginDTO.Nombre && x.Contraseña == loginDTO.Contraseña 
+            && x.Clave==loginDTO.Clave);
+            if (!usuarioExiste)
+            {
+                throw new KeyNotFoundException("Usuario o contraseña incorrectos");
+            }
+            else
+            {
+                return usuarioExiste;
+            }
+        }
+        
     }
 }

@@ -18,6 +18,12 @@ namespace ProyectoAPIAlumnosNotificaciones.Services
             _mapper = mapper;
         }
 
+        public GrupoDTO CrearGrupo(AgregarGrupoDTO dto)
+        {
+            var grupo = _mapper.Map<Grupos>(dto);
+            _repository.Insert(grupo);
+            return _mapper.Map<GrupoDTO>(grupo);
+        }
         public List<GrupoDTO> GetAll()
         {
             var grupos = _repository.GetAll();
