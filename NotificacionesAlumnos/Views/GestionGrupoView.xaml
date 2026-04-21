@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.GestionGrupoView"
+             Title="GestionGrupoView"
+             BackgroundColor="White">
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+        <Border WidthRequest="80" HeightRequest="80" StrokeShape="RoundRectangle 40" 
+                BackgroundColor="#E8F5E9" HorizontalOptions="Center" StrokeThickness="0">
+            <Label Text="👥" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Border>
+
+        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+            <Label Text="Datos del Grupo" FontSize="24" FontAttributes="Bold" TextColor="#2E7D32"/>
+            <Label Text="Asigna un nombre para identificarlo" TextColor="Gray" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Spacing="8">
+            <Label Text="Nombre del Grupo" FontAttributes="Bold" Margin="5,0"/>
+            <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0" Padding="10,0">
+                <Entry Placeholder="Ej. 6to Semestre - A" 
+                       Text="{Binding NombreGrupo}"
+                       MaxLength="30"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <Button Text="GUARDAR GRUPO" 
+                BackgroundColor="#2E7D32" 
+                TextColor="White" 
+                FontAttributes="Bold"
+                CornerRadius="12" 
+                HeightRequest="55" 
+                Margin="0,20,0,0"
+                Command="{Binding GuardarGrupoCommand}"/>
+
+        <Button Text="CANCELAR" 
+                BackgroundColor="Transparent" 
+                TextColor="#C62828" 
+                FontSize="13"
+                Command="{Binding VolverCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

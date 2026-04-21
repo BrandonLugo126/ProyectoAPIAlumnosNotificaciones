@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.GruposView"
+             Title="GruposView"
+             x:Name="this"
+             BackgroundColor="#F5F5F5">
+    <Grid RowDefinitions="Auto, *">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Padding="20" BackgroundColor="#2E7D32">
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="Gestión de Grupos" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Crea o selecciona un grupo para ver alumnos" TextColor="#C8E6C9" FontSize="12"/>
+            </VerticalStackLayout>
+
+            <Button Grid.Column="1" 
+                    Text="+"            
+                    FontSize="24"
+                    BackgroundColor="#4CAF50" 
+                    TextColor="White" 
+                    HeightRequest="50" 
+                    WidthRequest="50" 
+                    CornerRadius="25"
+                    Command="{Binding AgregarGrupoCommand}"/>
+        </Grid>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Grupos}" Margin="15">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" Margin="0,0,0,10" Padding="15" BackgroundColor="White">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                <Label Text="{Binding NombreGrupo}" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding CantidadAlumnos, StringFormat='{0} alumnos inscritos'}" TextColor="Gray" FontSize="13"/>
+                            </VerticalStackLayout>
+
+                            <HorizontalStackLayout Grid.Column="1" Spacing="10">
+                                <ImageButton Source="edit_icon.png" HeightRequest="20" Command="{Binding BindingContext.EditarGrupoCommand, Source={x:Reference Name=this}}" CommandParameter="{Binding .}"/>
+                                <ImageButton Source="delete_icon.png" HeightRequest="20" Command="{Binding BindingContext.EliminarGrupoCommand, Source={x:Reference Name=this}}" CommandParameter="{Binding .}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

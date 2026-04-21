@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.MaestroMainView"
+             Title="MaestroMainView"
+             BackgroundColor="#F5F5F5">
+    <Grid RowDefinitions="Auto, *">
+
+        <VerticalStackLayout Grid.Row="0" Padding="15" BackgroundColor="#2E7D32">
+            <Border StrokeShape="RoundRectangle 20" StrokeThickness="0" BackgroundColor="White" Padding="5,0">
+                <SearchBar Placeholder="Buscar alumno..." 
+                           PlaceholderColor="Gray"
+                           TextColor="#333333"
+                           FontSize="14"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Alumnos}" Margin="15">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 12" Margin="0,0,0,10" Padding="15" StrokeThickness="0">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#E8F5E9" StrokeThickness="0">
+                                <Label Text="👤" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="15,0">
+                                <Label Text="{Binding Nombre}" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding Matricula}" FontSize="12" TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                            <CheckBox Grid.Column="2" Color="#2E7D32" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

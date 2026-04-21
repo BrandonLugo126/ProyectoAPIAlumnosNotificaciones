@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.RedactarAvisoView"
+             Title="RedactarAvisoView"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             BackgroundColor="White">
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Label Text="Redactar Aviso" FontSize="26" FontAttributes="Bold" TextColor="#2E7D32"/>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Tipo de Comunicación" FontAttributes="Bold" Margin="5,0"/>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0" Padding="10,0">
+                    <Picker x:Name="TipoAvisoPicker" Title="Selecciona el alcance...">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Personal (Seleccionar alumnos)</x:String>
+                                <x:String>General (Toda la escuela)</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Título" FontAttributes="Bold" Margin="5,0"/>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0" Padding="10,0">
+                    <Entry Placeholder="Ej. Entrega de Proyectos" Text="{Binding Titulo}"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Mensaje" FontAttributes="Bold" Margin="5,0"/>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0" Padding="10">
+                    <Editor Placeholder="Escribe aquí el contenido detallado..." 
+                            HeightRequest="150" 
+                            AutoSize="Disabled"
+                            Text="{Binding Contenido}"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Vence el día:" FontAttributes="Bold" Margin="5,0"/>
+                <Border StrokeShape="RoundRectangle 10" StrokeThickness="1" Stroke="#E0E0E0" Padding="10,5">
+                    <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" 
+            Format="D"
+            TextColor="#2E7D32"/>
+                </Border>
+                <Label Text="El aviso desaparecerá para el alumno después de esta fecha." 
+                       FontSize="11" TextColor="Gray" Margin="5,0"/>
+            </VerticalStackLayout>
+
+            <Button Text="CONTINUAR" 
+                    BackgroundColor="#2E7D32" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="10" 
+                    HeightRequest="55" 
+                    Margin="0,10,0,0"
+                    Command="{Binding ContinuarCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

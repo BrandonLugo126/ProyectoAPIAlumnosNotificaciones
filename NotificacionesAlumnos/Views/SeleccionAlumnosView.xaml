@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.SeleccionAlumnosView"
+             Title="SeleccionAlumnosView"
+             BackgroundColor="#F5F5F5">
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <VerticalStackLayout Grid.Row="0" Padding="15" BackgroundColor="#2E7D32">
+            <Label Text="¿A quién enviamos el aviso?" 
+                   TextColor="White" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   Margin="0,0,0,10"/>
+            <Border StrokeShape="RoundRectangle 20" StrokeThickness="0" BackgroundColor="White" Padding="10,0">
+                <SearchBar Placeholder="Buscar por nombre..." HeightRequest="40"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Alumnos}" 
+                        SelectionMode="Multiple"
+                        SelectedItems="{Binding AlumnosSeleccionados}"
+                        Margin="15">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 12" Margin="0,0,0,10" Padding="15" BackgroundColor="White">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#E8F5E9" />
+                                        <Setter Property="Stroke" Value="#2E7D32" />
+                                        <Setter Property="StrokeThickness" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState Name="Normal" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" StrokeShape="RoundRectangle 20" BackgroundColor="#F0F2F5" StrokeThickness="0">
+                                <Label Text="👤" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="15,0" VerticalOptions="Center">
+                                <Label Text="{Binding Nombre}" FontAttributes="Bold" TextColor="#333333"/>
+                                <Label Text="{Binding Matricula}" FontSize="12" TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                            <CheckBox Grid.Column="2" 
+                                      Color="#2E7D32" 
+                                      IsChecked="{Binding IsSelected}" 
+                                      InputTransparent="True"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Border Grid.Row="2" Padding="20" BackgroundColor="White" StrokeThickness="1" Stroke="#E0E0E0">
+            <Button Text="ENVIAR AVISO AHORA" 
+                    BackgroundColor="#2E7D32" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="10" 
+                    HeightRequest="55"
+                    Command="{Binding EnviarAvisoFinalCommand}"/>
+        </Border>
+
+    </Grid>
+</ContentPage>

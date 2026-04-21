@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotificacionesAlumnos.Views.DetallesAvisoMaestroView"
+             Title="DetallesAvisoMaestroView"
+             BackgroundColor="#F5F5F5">
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <Border Grid.Row="0" Margin="15" Padding="20" StrokeShape="RoundRectangle 15" BackgroundColor="White" StrokeThickness="0">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="{Binding TituloAviso}" FontSize="20" FontAttributes="Bold" TextColor="#2E7D32"/>
+                <HorizontalStackLayout Spacing="10">
+                    <Border BackgroundColor="#E8F5E9" Padding="8,2" StrokeShape="RoundRectangle 5">
+                        <Label Text="ENVIADO" FontSize="10" TextColor="#2E7D32" FontAttributes="Bold"/>
+                    </Border>
+                    <Label Text="{Binding FechaEnvio}" FontSize="12" TextColor="Gray" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*, *" Margin="15,0" ColumnSpacing="15">
+            <Border Grid.Column="0" Padding="15" StrokeShape="RoundRectangle 12" BackgroundColor="#E3F2FD" StrokeThickness="0">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label Text="{Binding TotalLeidos}" FontSize="24" FontAttributes="Bold" TextColor="#1976D2" HorizontalOptions="Center"/>
+                    <Label Text="Leídos" FontSize="12" TextColor="#1976D2" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Grid.Column="1" Padding="15" StrokeShape="RoundRectangle 12" BackgroundColor="#FFEBEE" StrokeThickness="0">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label Text="{Binding TotalPendientes}" FontSize="24" FontAttributes="Bold" TextColor="#C62828" HorizontalOptions="Center"/>
+                    <Label Text="Pendientes" FontSize="12" TextColor="#C62828" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding SeguimientoAlumnos}" Margin="15">
+            <CollectionView.Header>
+                <Label Text="Estado por Alumno" FontAttributes="Bold" Margin="0,10" TextColor="#333333"/>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 10" Margin="0,0,0,8" Padding="15" BackgroundColor="White" StrokeThickness="0">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding NombreAlumno}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Grupo}" FontSize="11" TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding EstadoLectura}" 
+                                       TextColor="{Binding ColorEstado}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="12" 
+                                       HorizontalOptions="End"/>
+                                <Label Text="{Binding FechaLectura}" 
+                                       FontSize="10" 
+                                       TextColor="Gray" 
+                                       HorizontalOptions="End"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

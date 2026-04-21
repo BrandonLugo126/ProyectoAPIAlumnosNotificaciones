@@ -14,26 +14,63 @@
         ContentTemplate="{DataTemplate views:LoginView}"
         Route="LoginView" />-->
 
-    <TabBar>
-        <Tab Title="Personales" Icon="informacion-personal.png">
-            <ShellContent 
-                Title="Mis Avisos"
-                ContentTemplate="{DataTemplate views:AvisosView}"
-                Route="AvisosView" />
+    <!--<ShellContent
+    Title="Registro Maestro"
+    ContentTemplate="{DataTemplate views:RegistroMaestroView}"
+    Route="RegistroMaestroView" />-->
+
+    <!--<ShellContent
+    Title="Configurar Grupo"
+    ContentTemplate="{DataTemplate views:GestionGrupoView}"
+    Route="GestionGrupoView" />-->
+
+    <!--<ShellContent
+    Title="Crear Alumno"
+    ContentTemplate="{DataTemplate views:CrearAlumnoView}"
+    Route="CrearAlumnoView" />-->
+    
+    <!--<ShellContent
+    Title="Seleccionar Alumnos"
+    ContentTemplate="{DataTemplate views:SeleccionAlumnosView}"
+    Route="SeleccionAlumnosView" />-->
+
+    <ShellContent
+    Title="Detalle de Seguimiento"
+    ContentTemplate="{DataTemplate views:DetallesAvisoMaestroView}"
+    Route="DetalleAvisoMaestroView" />
+
+
+    <TabBar Shell.TabBarBackgroundColor="#2B5797" 
+            Shell.TabBarTitleColor="White" 
+            Shell.TabBarUnselectedColor="#B0C4DE">
+
+        <Tab Title="Personales" Icon="informacion_personal.png">
+            <ShellContent ContentTemplate="{DataTemplate views:AvisosView}" />
         </Tab>
 
         <Tab Title="Generales" Icon="escuela.png">
-            <ShellContent 
-                Title="Escuela"
-                ContentTemplate="{DataTemplate views:AvisosGeneralesView}"
-                Route="AvisosGeneralesView" />
+            <ShellContent ContentTemplate="{DataTemplate views:AvisosGeneralesView}" />
         </Tab>
 
-        <Tab Title="Perfil" Icon="Perfil.png">
-            <ShellContent 
-                Title="Mi Cuenta"
-                ContentTemplate="{DataTemplate views:PerfilAlumnoView}"
-                Route="PerfilAlumnoView" />
+        <Tab Title="Perfil" Icon="perfil.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PerfilAlumnoView}" />
+        </Tab>
+    </TabBar>
+
+    <TabBar Shell.TabBarBackgroundColor="#2E7D32" 
+            Shell.TabBarTitleColor="White" 
+            Shell.TabBarUnselectedColor="#C8E6C9">
+
+        <Tab Title="Grupos" Icon="grupos.png">
+            <ShellContent ContentTemplate="{DataTemplate views:GruposView}" />
+        </Tab>
+
+        <Tab Title="Alumnos" Icon="alumnos.png">
+            <ShellContent ContentTemplate="{DataTemplate views:MaestroMainView}" />
+        </Tab>
+
+        <Tab Title="Nuevo Aviso" Icon="enviar_aviso.png">
+            <ShellContent ContentTemplate="{DataTemplate views:RedactarAvisoView}" />
         </Tab>
     </TabBar>
 
